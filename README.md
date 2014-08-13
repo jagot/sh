@@ -1,0 +1,4 @@
+sh
+==
+
+Shell configuration
