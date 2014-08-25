@@ -1,4 +1,4 @@
-PATH=$HOME/System/prefix/bin:/usr/local/bin:/usr/local/sbin:$PATH
+PATH=$HOME/.cask/bin:$HOME/System/prefix/bin:/usr/local/bin:/usr/local/sbin:$PATH
 
 unalias run-help
 autoload run-help
