@@ -43,3 +43,4 @@ antigen bundle tmux
 antigen-apply
 
 [[ $TERM == eterm-color ]] && export TERM=xterm
+[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' # Without this Tramp will hang
