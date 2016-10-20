@@ -1,5 +1,3 @@
-PATH=$HOME/.cask/bin:$HOME/System/prefix/bin:/usr/local/bin:/usr/local/sbin:$PATH
-
 unalias run-help
 autoload run-help
 HELPDIR=/usr/local/share/zsh/helpfiles
@@ -27,7 +25,6 @@ SAVEHIST=1000
 bindkey -e
 # End of lines configured by zsh-newuser-install
 
-source ~/.common.sh
 
 source ~/.antigen/antigen.zsh
 
@@ -44,3 +41,5 @@ antigen-apply
 
 [[ $TERM == eterm-color ]] && export TERM=xterm
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' # Without this Tramp will hang
+
+[[ -f ~/.profile ]] && source ~/.profile
