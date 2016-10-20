@@ -28,6 +28,9 @@ bindkey -e
 setopt NO_HUP
 setopt NO_CHECK_JOBS
 
+autoload colors
+colors
+
 source ~/.antigen/antigen.zsh
 
 antigen use oh-my-zsh
