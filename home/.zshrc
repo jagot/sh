@@ -31,21 +31,14 @@ setopt NO_CHECK_JOBS
 autoload colors
 colors
 
-source ~/.antigen/antigen.zsh
+source <(antibody init)
 
-antigen use oh-my-zsh
-antigen bundle zsh-users/zsh-completions src
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-history-substring-search
-antigen bundle git
-antigen bundle git-flow-avh
-antigen bundle arialdomartini/oh-my-git
-antigen theme arialdomartini/oh-my-git-themes arialdo-granzestyle
-antigen bundle tmux
-antigen bundle supercrabtree/k
-antigen bundle gpg-agent
-
-antigen-apply
+antibody bundle zsh-users/zsh-completions
+antibody bundle zsh-users/zsh-syntax-highlighting
+antibody bundle zsh-users/zsh-history-substring-search
+antibody bundle supercrabtree/k
+antibody bundle mafredri/zsh-async
+antibody bundle sindresorhus/pure
 
 [[ $TERM == eterm-color ]] && export TERM=xterm
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' # Without this Tramp will hang
