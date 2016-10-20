@@ -30,14 +30,16 @@ setopt NO_CHECK_JOBS
 
 source ~/.antigen/antigen.zsh
 
-antigen-use oh-my-zsh
+antigen use oh-my-zsh
 antigen bundle zsh-users/zsh-completions src
 antigen bundle zsh-users/zsh-syntax-highlighting
-antigen-bundle zsh-users/zsh-history-substring-search
+antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle git
+antigen bundle git-flow-avh
 antigen bundle arialdomartini/oh-my-git
 antigen theme arialdomartini/oh-my-git-themes arialdo-granzestyle
 antigen bundle tmux
+antigen bundle supercrabtree/k
 
 antigen-apply
 
