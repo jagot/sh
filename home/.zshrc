@@ -25,6 +25,8 @@ SAVEHIST=1000
 bindkey -e
 # End of lines configured by zsh-newuser-install
 
+setopt NO_HUP
+setopt NO_CHECK_JOBS
 
 source ~/.antigen/antigen.zsh
 
