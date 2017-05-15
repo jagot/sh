@@ -1,0 +1,3 @@
+[submodule "home/.zsh/zsh-dircolors-solarized"]
+	path = home/.zsh/zsh-dircolors-solarized
+	url = https://github.com/joel-porquet/zsh-dircolors-solarized

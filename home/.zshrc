@@ -40,6 +40,12 @@ antibody bundle supercrabtree/k
 antibody bundle mafredri/zsh-async
 antibody bundle sindresorhus/pure
 
+if [ "$TERM" != "dumb" ]; then
+    source ~/.zsh/zsh-dircolors-solarized/zsh-dircolors-solarized.zsh
+    setupsolarized dircolors.ansi-dark
+    alias ls='ls -G -h --color=auto'
+fi
+
 [[ $TERM == eterm-color ]] && export TERM=xterm
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' # Without this Tramp will hang
 
