@@ -27,6 +27,7 @@ bindkey -e
 
 setopt NO_HUP
 setopt NO_CHECK_JOBS
+setopt AUTO_CD
 
 autoload colors
 colors

@@ -8,7 +8,6 @@ HISTCONTROL=ignoredups
 HISTCONTROL=ignoreboth
 
 
-ulimit -c unlimited # No limit on core dump file size
 
 ############################################
 # Aliases
@@ -22,10 +21,10 @@ alias rsyncrz='rsync -rlDz --info=progress2'
 ############################################
 
 function notebookserver {
-    [ $# -eq 0 ] && pynbdir="$HOME/Dropbox/ipynb" || pynbdir="$1"
+    [ $# -eq 0 ] && pynbdir="$HOME/Sync/ipynb" || pynbdir="$1"
     ordir=$(pwd)
     cd "$pynbdir"
-    ipython3 notebook --no-browser --deep-reload --pylab=inline
+    jupyter notebook --no-browser
     cd "$ordir"
 }
 
