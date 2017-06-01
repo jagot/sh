@@ -2,7 +2,10 @@
 # Misc
 ############################################
 
-EDITOR='emacs -nw'
+[ -d $HOME/bin ] && PATH=$PATH:$HOME/bin
+
+EDITOR=zile
+VISUAL=emacs
 
 HISTCONTROL=ignoredups
 HISTCONTROL=ignoreboth
@@ -12,6 +15,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
     export LANG=en_US.UTF-8
 fi
 
+export GCC_COLORS=1
 
 ############################################
 # Aliases
