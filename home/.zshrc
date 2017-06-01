@@ -44,7 +44,9 @@ antibody bundle sindresorhus/pure
 if [ "$TERM" != "dumb" ]; then
     source ~/.zsh/zsh-dircolors-solarized/zsh-dircolors-solarized.zsh
     setupsolarized dircolors.ansi-dark
-    alias ls='ls -G -h --color=auto'
+    LS="ls"
+    [[ "$(uname)" == "Darwin" ]] &&  LS="gls"
+    alias ls='$LS -G -h --color=auto'
 fi
 
 [[ $TERM == eterm-color ]] && export TERM=xterm
