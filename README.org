@@ -1,0 +1,16 @@
+#+TITLE: Shell configuration
+#+AUTHOR: Stefanos Carlström
+#+EMAIL: stefanos.carlstrom@gmail.com
+
+* Installation instructions
+  To clone this, [[https://github.com/technicalpickles/homesick][Homesick]] is needed. When that is installed, simply issue
+  #+BEGIN_SRC sh
+    homesick clone jagot/sh
+    homesick link sh
+    homesick rc sh
+  #+END_SRC
+  The last step will install dependencies, using [[./.homesickrc][this Ruby script]]. On
+  macOS, a shell script called =dircolors=, pointing to =gdircolors=
+  (of coreutils) will be created, and [[http://getantibody.github.io][Antibody]]. On [[https://www.archlinux.org][Arch Linux]] (where
+  [[https://github.com/rmarquis/pacaur][pacaur]] has hopefully been installed beforehand), only Antibody is
+  installed.
