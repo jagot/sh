@@ -1,0 +1,21 @@
+# -*- ruby -*-
+
+require 'mkmf'
+
+if RUBY_PLATFORM.include? 'darwin'
+  %x( brew tap getantibody/homebrew-antibody )
+  %x( brew install antibody )
+
+  %x( brew install coreutils )
+  binDir = File.join(Dir.home, 'bin')
+  Dir.mkdir binDir unless Dir.exists? File.expand_path('~/bin')
+  dircolorsFile = File.join(binDir, 'dircolors')
+  
+  unless File.exists? dircolorsFile
+    File.write(dircolorsFile, '#!/bin/zsh\ngdircolors\n')
+    File.chmod(0744, dircolorsFile)
+  end
+elsif not find_executable('pacaur').nil?
+  %( pacaur -S antibody )
+end
+
