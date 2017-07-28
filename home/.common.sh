@@ -23,6 +23,7 @@ export GCC_COLORS=1
 
 alias rsyncaz='rsync -az --info=progress2'
 alias rsyncrz='rsync -rlDz --info=progress2'
+alias tb="nc termbin.com 9999"
 
 ############################################
 # Functions
