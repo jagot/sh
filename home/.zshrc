@@ -52,4 +52,13 @@ fi
 [[ $TERM == eterm-color ]] && export TERM=xterm
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' # Without this Tramp will hang
 
-[[ -f ~/.profile ]] && source ~/.profile
+sourceif()
+{
+    [[ -f $1 ]] && source $1
+}
+
+sourceif ~/.profile
+sourceif ~/.iterm2_shell_integration.zsh
+sourceif ~/.pyenv.sh
+sourceif ~/.fzf.zsh
+sourceif ~/.site.zsh
