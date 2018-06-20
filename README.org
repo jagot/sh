@@ -14,3 +14,7 @@
   (of coreutils) will be created, and [[http://getantibody.github.io][Antibody]]. On [[https://www.archlinux.org][Arch Linux]] (where
   [[https://github.com/rmarquis/pacaur][pacaur]] has hopefully been installed beforehand), only Antibody is
   installed.
+
+* Modularization
+  - [[http://zanshin.net/2013/02/02/zsh-configuration-from-the-ground-up/]]
+  - [[https://github.com/spicycode/ze-best-zsh-config]]
