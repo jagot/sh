@@ -16,6 +16,6 @@ if RUBY_PLATFORM.include? 'darwin'
     File.chmod(0744, dircolorsFile)
   end
 elsif not find_executable('pacaur').nil?
-  %( pacaur -S antibody )
+  %( yay -S antibody )
 end
 

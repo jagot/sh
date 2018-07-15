@@ -4,14 +4,11 @@
 
 [ -d $HOME/bin ] && PATH=$PATH:$HOME/bin
 if which ruby >/dev/null && which gem >/dev/null; then
-    PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+    PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
 
 EDITOR=zile
 VISUAL=emacs
-export HOMEBREW_EDITOR=zile
-export HOMEBREW_GITHUB_API_TOKEN="cb231b26300206a8df32431412e00fdd41db138a"
-export JULIA_NIGHTLY="/Applications/Julia-0.7.app/Contents/Resources/julia/bin/julia"
 
 HISTCONTROL=ignoredups
 HISTCONTROL=ignoreboth
@@ -30,7 +27,6 @@ export GCC_COLORS=1
 alias rsyncaz='rsync -az --info=progress2'
 alias rsyncrz='rsync -rlDz --info=progress2'
 alias tb="nc termbin.com 9999"
-alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
 alias e="emacsclient --no-wait"
 alias getpage='wget --wait=2 --no-parent -r -p -k'
 
