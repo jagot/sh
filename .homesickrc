@@ -15,7 +15,7 @@ if RUBY_PLATFORM.include? 'darwin'
     File.write(dircolorsFile, '#!/bin/zsh\ngdircolors\n')
     File.chmod(0744, dircolorsFile)
   end
-elsif not find_executable('pacaur').nil?
-  %( yay -S antibody )
+elsif not find_executable('yay').nil?
+  %x( yay -S antibody --noconfirm --needed )
 end
 
