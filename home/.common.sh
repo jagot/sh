@@ -99,3 +99,11 @@ function osc {
 function pip-upgrade {
     pip install $(pip list --outdated --format=columns | tail -n +3 | awk '{print $1 }') --upgrade
 }
+
+function git-multistatus {
+    for i in *; do
+        cd $i
+        [ "$(git status --porcelain 2>&1 | wc -m | xargs)" != "0" ] && pwd && git status -s
+        cd ..
+    done
+}
