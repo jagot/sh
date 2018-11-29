@@ -7,8 +7,8 @@ if which ruby >/dev/null && which gem >/dev/null; then
     PATH="$(ruby -r rubygems -e 'puts Gem.user_dir')/bin:$PATH"
 fi
 
-EDITOR=zile
-VISUAL=emacs
+export EDITOR=zile
+export VISUAL=emacsclient
 
 HISTCONTROL=ignoredups
 HISTCONTROL=ignoreboth
@@ -29,6 +29,9 @@ alias rsyncrz='rsync -rlDz --info=progress2'
 alias tb="nc termbin.com 9999"
 alias e="emacsclient --no-wait"
 alias getpage='wget --wait=2 --no-parent -r -p -k'
+[ "$(uname)" = "Linux" ] && alias pbcopy="xclip -sel clip"
+alias tb="nc termbin.com 9999"
+alias lpdbl="lp -o sides=two-sided-long-edge"
 
 if type imgcat >/dev/null 2>&1; then
     alias qrpaste="pbpaste | qrencode -o - | imgcat"
