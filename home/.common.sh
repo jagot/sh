@@ -103,10 +103,29 @@ function pip-upgrade {
     pip install $(pip list --outdated --format=columns | tail -n +3 | awk '{print $1 }') --upgrade
 }
 
+# https://stackoverflow.com/a/3278427/1079038
 function git-multistatus {
     for i in *; do
-        cd $i
-        [ "$(git status --porcelain 2>&1 | wc -m | xargs)" != "0" ] && pwd && git status -s
-        cd ..
+        if [ -d "$i/.git" ]; then
+            cd $i
+            [ "$#" = "1" ] && [ "$1" = "-u" ] && git remote update > /dev/null 
+            LOCAL=$(git rev-parse @)
+            REMOTE=$(git rev-parse @{u} 2>/dev/null)
+            BASE=$(git merge-base @ @{u} 2>/dev/null)
+            STATUS=$(git status --porcelain 2>&1 | wc -m | xargs)
+            if [ "$LOCAL" = "$REMOTE" ]; then
+                [ "$STATUS" != "0" ] && echo "$i"
+            elif [ "$LOCAL" = "$BASE" ]; then
+                echo "$i ⇣"
+            elif [ "$REMOTE" = "$BASE" ]; then
+                echo "$i ⇡"
+            else
+                echo "$i ⇅"
+            fi
+            [ "$STATUS" != "0" ] && git status -s && echo
+            cd ..
+        else
+            echo "$i is not a Git directory"
+        fi
     done
 }
