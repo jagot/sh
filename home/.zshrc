@@ -1,3 +1,6 @@
+# Without this Tramp will hang
+[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
+
 unalias run-help
 autoload run-help
 HELPDIR=/usr/local/share/zsh/helpfiles
@@ -50,7 +53,6 @@ if [ "$TERM" != "dumb" ]; then
 fi
 
 [[ $TERM == eterm-color ]] && export TERM=xterm
-[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' # Without this Tramp will hang
 
 sourceif()
 {

@@ -30,13 +30,17 @@ alias tb="nc termbin.com 9999"
 alias e="emacsclient --no-wait"
 alias getpage='wget --wait=2 --no-parent -r -p -k'
 [ "$(uname)" = "Linux" ] && alias pbcopy="xclip -sel clip"
+[ "$(uname)" = "Linux" ] && alias pbpaste="xclip -o -sel clip"
 alias tb="nc termbin.com 9999"
 alias lpdbl="lp -o sides=two-sided-long-edge"
 alias pyserve="python3 -m http.server --bind localhost"
 
 if type imgcat >/dev/null 2>&1; then
-    alias qrpaste="pbpaste | qrencode -o - | imgcat"
+    alias dispimg="imgcat"
+elif type feh >/dev/null 2>&1; then
+    alias dispimg="feh -"
 fi
+alias qrpaste="pbpaste | qrencode -o - | dispimg"
 
 ############################################
 # Functions
@@ -129,4 +133,9 @@ function git-multistatus {
             echo "$i is not a Git directory"
         fi
     done
+}
+
+function magit {
+    DIR=$1
+    emacsclient --eval "(magit-status \"${DIR:=$(pwd)}\")"
 }
