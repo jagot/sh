@@ -32,6 +32,7 @@ alias getpage='wget --wait=2 --no-parent -r -p -k'
 [ "$(uname)" = "Linux" ] && alias pbcopy="xclip -sel clip"
 alias tb="nc termbin.com 9999"
 alias lpdbl="lp -o sides=two-sided-long-edge"
+alias pyserve="python3 -m http.server --bind localhost"
 
 if type imgcat >/dev/null 2>&1; then
     alias qrpaste="pbpaste | qrencode -o - | imgcat"

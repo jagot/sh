@@ -61,4 +61,3 @@ sourceif ~/.profile
 sourceif ~/.iterm2_shell_integration.zsh
 sourceif ~/.pyenv.sh
 sourceif ~/.fzf.zsh
-sourceif ~/.site.zsh
