@@ -26,12 +26,10 @@ export GCC_COLORS=1
 
 alias rsyncaz='rsync -az --info=progress2'
 alias rsyncrz='rsync -rlDz --info=progress2'
-alias tb="nc termbin.com 9999"
 alias e="emacsclient --no-wait"
 alias getpage='wget --wait=2 --no-parent -r -p -k'
 [ "$(uname)" = "Linux" ] && alias pbcopy="xclip -sel clip"
 [ "$(uname)" = "Linux" ] && alias pbpaste="xclip -o -sel clip"
-alias tb="nc termbin.com 9999"
 alias lpdbl="lp -o sides=two-sided-long-edge"
 alias pyserve="python3 -m http.server --bind localhost"
 
@@ -41,6 +39,21 @@ elif type feh >/dev/null 2>&1; then
     alias dispimg="feh -"
 fi
 alias qrpaste="pbpaste | qrencode -o - | dispimg"
+
+############################################
+# Termbin
+############################################
+
+# https://gist.github.com/schmich/f2ef5c85030863d630a97ec91c1b8eff
+
+alias tb="nc termbin.com 9999"
+alias encrypt="openssl enc -aes-256-cbc -base64"
+alias decrypt="openssl enc -aes-256-cbc -base64 -d"
+alias tbc="encrypt | tb"
+
+function tbd {
+    curl -s "http://termbin.com/$1" | decrypt
+}
 
 ############################################
 # Functions
