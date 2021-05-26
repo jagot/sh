@@ -131,14 +131,21 @@ function git-multistatus {
             REMOTE=$(git rev-parse @{u} 2>/dev/null)
             BASE=$(git merge-base @ @{u} 2>/dev/null)
             STATUS=$(git status --porcelain 2>&1 | wc -m | xargs)
-            if [ "$LOCAL" = "$REMOTE" ]; then
-                [ "$STATUS" != "0" ] && echo "$i"
-            elif [ "$LOCAL" = "$BASE" ]; then
-                echo "$i ⇣"
-            elif [ "$REMOTE" = "$BASE" ]; then
-                echo "$i ⇡"
+            BRANCH=$(git branch --show-current)
+            if [ "$BRANCH" = "master" ] || [ "$BRANCH" = "main" ]; then
+                COLOR="\e[1m\e[32m"
             else
-                echo "$i ⇅"
+                COLOR="\e[1m\e[94m"
+            fi
+            NAME="$i @ $COLOR$BRANCH\e[0m"
+            if [ "$LOCAL" = "$REMOTE" ]; then
+                [ "$STATUS" != "0" ] && echo -e "$NAME"
+            elif [ "$LOCAL" = "$BASE" ]; then
+                echo -e "$NAME ⇣"
+            elif [ "$REMOTE" = "$BASE" ]; then
+                echo -e "$NAME ⇡"
+            else
+                echo -e "$NAME ⇅"
             fi
             [ "$STATUS" != "0" ] && git status -s && echo
             cd ..
