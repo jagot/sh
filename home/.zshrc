@@ -59,7 +59,5 @@ sourceif()
     [[ -f $1 ]] && source $1
 }
 
-sourceif ~/.profile
 sourceif ~/.iterm2_shell_integration.zsh
-sourceif ~/.pyenv.sh
 sourceif ~/.fzf.zsh
