@@ -126,7 +126,7 @@ function git-multistatus {
     for i in *; do
         if [ -d "$i/.git" ]; then
             cd $i
-            [ "$#" = "1" ] && [ "$1" = "-u" ] && git remote update > /dev/null 
+            [ "$#" = "1" ] && [ "$1" = "-u" ] && git remote update > /dev/null
             LOCAL=$(git rev-parse @)
             REMOTE=$(git rev-parse @{u} 2>/dev/null)
             BASE=$(git merge-base @ @{u} 2>/dev/null)
@@ -158,4 +158,27 @@ function git-multistatus {
 function magit {
     DIR=$1
     emacsclient --eval "(magit-status \"${DIR:=$(pwd)}\")"
+}
+
+function update-mirrorlist {
+    if ! type "rate-mirrors" > /dev/null; then
+        echo "Install rate-mirrors first"
+        return 1
+    fi
+
+    TMPFILE="$(mktemp)"
+    BACKUPFILE="/etc/pacman.d/mirrorlist.backup-$(date -I)"
+    # https://stackoverflow.com/a/12187944
+    # Not free from race conditions, naturally
+    if [[ -e $BACKUPFILE || -L $BACKUPFILE ]] ; then
+        i=1
+        while [[ -e $BACKUPFILE-$i || -L $BACKUPFILE-$i ]] ; do
+            let i++
+        done
+        BACKUPFILE=$BACKUPFILE-$i
+    fi
+    sudo touch -- $BACKUPFILE
+    rate-mirrors --save=$TMPFILE arch --max-delay=43200 &&
+        sudo mv /etc/pacman.d/mirrorlist $BACKUPFILE &&
+        sudo mv $TMPFILE /etc/pacman.d/mirrorlist
 }
