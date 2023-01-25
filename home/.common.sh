@@ -40,6 +40,9 @@ elif type feh >/dev/null 2>&1; then
 fi
 alias qrpaste="pbpaste | qrencode -o - | dispimg"
 
+# https://unix.stackexchange.com/a/277707
+alias duplicatefiles="gfind . ! -empty -type f -exec md5sum {} + | gsort | guniq -w32 -dD"
+
 ############################################
 # Termbin
 ############################################
