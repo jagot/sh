@@ -6,6 +6,7 @@ sourceif()
 }
 
 sourceif ~/.site.sh
+sourceif ~/.site.zsh
 source ~/.common.sh
 
 sourceif ~/.profile
