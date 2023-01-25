@@ -47,8 +47,8 @@ alias qrpaste="pbpaste | qrencode -o - | dispimg"
 # https://gist.github.com/schmich/f2ef5c85030863d630a97ec91c1b8eff
 
 alias tb="nc termbin.com 9999"
-alias encrypt="openssl enc -aes-256-cbc -base64"
-alias decrypt="openssl enc -aes-256-cbc -base64 -d"
+alias encrypt="openssl enc -aes-256-cbc -md sha512 -pbkdf2 -iter 100000 -salt"
+alias decrypt="encrypt -d"
 alias tbc="encrypt | tb"
 
 function tbd {
