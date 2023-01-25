@@ -200,3 +200,14 @@ download-clip() {
     printf "Saved to: %s\n" "$filename"
     # based on Reino17's and teocci's comments in https://github.com/rg3/youtube-dl/issues/4821
 }
+
+killssh() {
+    OPWD=$(pwd)
+    cd ~/.ssh
+    for i in socket*; do
+        echo $i
+        ssh -o ControlPath=$i -O check blah
+        ssh -o ControlPath=$i -O exit blah
+    done
+    cd $OPWD
+}
