@@ -3,9 +3,6 @@
 require 'mkmf'
 
 if RUBY_PLATFORM.include? 'darwin'
-  %x( brew tap getantibody/homebrew-antibody )
-  %x( brew install antibody )
-
   %x( brew install coreutils )
   binDir = File.join(Dir.home, 'bin')
   Dir.mkdir binDir unless Dir.exists? File.expand_path('~/bin')
@@ -15,7 +12,5 @@ if RUBY_PLATFORM.include? 'darwin'
     File.write(dircolorsFile, '#!/bin/zsh\ngdircolors\n')
     File.chmod(0744, dircolorsFile)
   end
-elsif not find_executable('yay').nil?
-  %x( yay -S antibody --noconfirm --needed )
 end
 

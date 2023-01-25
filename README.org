@@ -11,9 +11,7 @@
   #+END_SRC
   The last step will install dependencies, using [[./.homesickrc][this Ruby script]]. On
   macOS, a shell script called =dircolors=, pointing to =gdircolors=
-  (of coreutils) will be created, and [[http://getantibody.github.io][Antibody]]. On [[https://www.archlinux.org][Arch Linux]] (where
-  [[https://github.com/rmarquis/pacaur][pacaur]] has hopefully been installed beforehand), only Antibody is
-  installed.
+  (of coreutils) will be created.
 
 * Modularization
   - [[http://zanshin.net/2013/02/02/zsh-configuration-from-the-ground-up/]]
