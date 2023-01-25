@@ -185,3 +185,18 @@ function update-mirrorlist {
         sudo mv /etc/pacman.d/mirrorlist $BACKUPFILE &&
         sudo mv $TMPFILE /etc/pacman.d/mirrorlist
 }
+
+download-clip() {
+    # $1: url or Youtube video id
+    # $2: starting time, in seconds, or in hh:mm:ss[.xxx] form
+    # $3: duration, in seconds, or in hh:mm:ss[.xxx] form
+    # $4: format, as accepted by youtube-dl (default: best)
+    # other args are passed directly to youtube-dl; eg, -r 40K
+    local fmt=${4:-best}
+    local url="$(youtube-dl -g -f $fmt ${@:5} "$1")"
+    local filename="$(youtube-dl --get-filename -f $fmt ${@:5} "$1")"
+    ffmpeg -loglevel warning -hide_banner -stats \
+        -ss $2 -i "$url" -c copy -t $3 "$filename"
+    printf "Saved to: %s\n" "$filename"
+    # based on Reino17's and teocci's comments in https://github.com/rg3/youtube-dl/issues/4821
+}
